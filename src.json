@@ -116,5 +116,5 @@
            {"act": "=",  "args": ["target", "cross[1]"]}, 
            {"act": "=",  "args": ["dist", "dist1"]}]
        }]}
-    ]}
+    ]
 }
