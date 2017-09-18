@@ -1,0 +1,120 @@
+{
+    "file": ["find_obstacles(self, walls, robots, dt) obstacles"],
+    "code": [ 
+      {"id": 0, "act": "=",  "args": ["obstacles", "{}"]},
+      {"id": 1, "act": "=",  "args": ["obstacles", "{1,2,3,4}"]},
+      {"id": 2, "act": "#",  "args": ["Среди стен."]},
+      {"id": 3, "act": "=",  "args": ["self_dist", "np.linalg.norm(self._pos - self._finish)"]},
+      {"id": 4, "act": "=",  "args": ["min_d", "self_dist"]},
+      {"id": 5, "act": "for", "tag": ["Tag"], 
+       "args": [{
+         "cond": ["wall in walls"], 
+         "blck": [
+           {"id": 6, "act": "#",  "args": ["поиск столкновения со стеной"]}, 
+           {"id": 7, "act": "=",  "args": ["cross", "cross_line_circle(wall._p1, wall._p2, self._pos, self._size)"]}, 
+           {"id": 8, "act": "if", 
+            "args": [{
+              "cond": ["cross is not None"], 
+              "blck": [
+                {"id": 9, "act": "=",  "args":   ["self._fail", "True"]}, 
+                {"id": 10, "act": "return",  "args":  ["None"]}]
+            }, {
+              "cond": ["else"], 
+              "blck": [{"id": 11, "act": "break",  "args":   [""]}]
+            }]
+           }, 
+           {"id": 12, "act": "#",  "args":  ["наблюдаемый фрагмент стены"]}, 
+           {"id": 13, "act": "if", 
+            "args":  [{
+              "cond": ["cross is None"], 
+              "blck": [{"id": 14, "act": "continue", "args": ["Tag"]}]
+            }]}, 
+           {"id": 15, "act": "#",  "args":  ["двигаться вдоль стены"]}, 
+           {"id": 16, "act": "if", 
+            "args":  [{
+              "cond": ["rule3"], 
+              "blck": [
+                {"id": 17, "act": "=",  "args": ["alfa", "60"]}, 
+                {"id": 18, "act": "=",  "args": ["a0", "get_angle(self._course, cross[0] - self._pos)"]}, 
+                {"id": 19, "act": "=",  "args": ["a1", "get_angle(self._course, cross[1] - self._pos)"]}, 
+                {"id": 20, "act": "=",  "args": ["dist0", "np.linalg.norm(cross[0] - self._finish)"]}]}]
+           }]}
+       ]},
+      {"id": 21, "act": "play",  "args": ["foo(obstacle)[0]._x"]},
+      {"id": 22, "act": "var",  "args":  ["x", "int"]},
+      {"id": 23, "act": "case", 
+       "tag": ["Tag2"], 
+       "exp": ["x = foo(); x"], 
+       "args": [{
+         "cond": ["-1"], 
+         "blck": [{"id": 24, "act":"=", "args": ["x", "0"]}]
+       }, {
+         "cond": ["1"], 
+         "blck": [{"id": 25, "act":"=", "args": ["x", "0"]}]
+       }]},
+      {"id": 26, "act": "var",  "args":  ["y", 'interface{}("_")']},
+      {"id": 27, "act": "case", 
+       "tag": ["Tag3"], 
+       "exp": ["y"], 
+       "args": [{
+         "cond": ["float"], 
+         "blck": [{"id": 28, "act":"=", "args": ["y", "0"]}]
+       }, {
+         "cond": ["string"], 
+         "blck": [{"id": 29, "act":"=", "args": ["y", "'Hello!'"]}]
+       }]},
+      {"id": 30, "act": "const",  "args":  ["x", "int(5)"]},
+      {"id": 31, "act": "defer",  "args":  ["finaly('In the End')"]},
+      {"id": 32, "act": "go",  "args":  ["run()"]},
+      {"id": 33, "act": "for", 
+       "args": [{
+         "cond": ["i = 0; i < 10; i++"], 
+         "blck": [{"id": 34, "act": "#",  "args": ["пустой цикл"]}]
+       }]},
+      {"id": 35, "act": "select", 
+       "tag": ["Tag4"], 
+       "args": [{
+         "cond": ["i1 <- c1"], 
+         "blck": [{"id": 36, "act": "print", "args": ['"received ", i1, " from c1"']}]
+       }, {
+         "cond": ["i2 -> c2"], 
+         "blck": [{"id": 37, "act": "print", "args": ['"sent ", i2, " to c1"']}]
+       }, {
+         "cond": ["i3, ok <= c3"], 
+         "blck": [{"id": 38, "act": "if", 
+                   "args": [{
+                     "cond": ["ok"], 
+                     "blck":[{"id": 39, "act": "print", "args": ['"received ", i3, " from c3"']}]
+                   }, {
+                     "cond": ["else"], 
+                     "blck":[{"id": 40, "act": "print", "args": ['"c3 is closed"']}]
+                   }]}]
+       }]},
+      {"id": 41, "act": "print",  "args":  ['"Hello!"']},
+      {"id": 42, "act": "if", 
+       "args": [{
+         "cond": ["i = 10; i !< 10 || i !> 10"], 
+         "blck": [{"id": 43, "act": "#",  "args": ["пустой блок"]}]
+       }]},
+      {"id": 44, "act": "if", 
+       "args": [{
+         "cond": ["a0 < alfa && a0 > 0 && a1 > 0 && a1 < alfa"], 
+         "blck": [
+           {"id": 45, "act": "=",  "args": ["dist1", "np.linalg.norm(cross[1] - self._finish)"]}, 
+           {"id": 46, "act": "=",  "args": ["target", "cross[0]"]}, 
+           {"id": 47, "act": "=",  "args": ["dist", "dist0"]}]
+       }, {
+         "cond": ["a0 < alfa && a0 > 0"], 
+         "blck": [
+           {"id": 48, "act": "=",  "args": ["dist0", "np.linalg.norm(cross[0] - self._finish)"]}, 
+           {"id": 49, "act": "=",  "args": ["target", "cross[0]"]}, 
+           {"id": 50, "act": "=",  "args": ["dist", "dist0"]}]
+       }, {
+         "cond": ["a1 < alfa && a0 > 0"], 
+         "blck": [
+           {"id": 51, "act": "=",  "args": ["dist1", "np.linalg.norm(cross[1] - self._finish)"]}, 
+           {"id": 52, "act": "=",  "args": ["target", "cross[1]"]}, 
+           {"id": 53, "act": "=",  "args": ["dist", "dist1"]}]
+       }]}
+    ]
+}
