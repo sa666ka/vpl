@@ -495,9 +495,12 @@ function appendCode(div_code, id){
           var elem = document.querySelector('[data-id="'+id+'"].statememt-tag');
           elem.parentNode.removeChild(elem);
         } else {
-          // удаляем все вложенные блоки из списка
-          for (var i of src.acts[id].blocks) {
-            delete src.blocks[i];
+          var blocks = src.acts[id].blocks;
+          if (blocks) {
+            // удаляем все вложенные блоки из списка
+            for (var i of blocks) {
+              delete src.blocks[i];
+            }
           }
           // удаляем из родительского блока
           var i = src.acts[id].block;
