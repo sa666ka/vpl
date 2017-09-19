@@ -20,7 +20,7 @@ var src = {
     },
     "acts": {
       0: {"block": 0, "act": "=",  "args": ["list", "[]int{1,2,3,4}"]},
-      1: {"block": 0, "act": "#",  "args": ["Комметрарий"]},
+      1: {"block": 0, "act": "#",  "args": ["Комментарий"]},
       2: {"block": 0, "act": "var",  "args": ["x", "map[int]rune{1:'a',2:'b',3:'c'}"]},
       4: {"block": 1, "act": "#",  "args": ["поиск столкновения со стеной"]},
       5: {"block": 1, "act": "=",  "args": ["cross", "cross_line_circle(p1, p2, pos, size)"]},
